@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from carehomes.models import CareHome
+from carehomes.serializers import CareHomeSerializer
 
-# Create your views here.
+
+class CareHomeViewSet(viewsets.ModelViewSet):
+    queryset = CareHome.objects.all()
+    serializer_class = CareHomeSerializer

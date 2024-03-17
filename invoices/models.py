@@ -15,11 +15,11 @@ class Invoice(models.Model):
     # Reference Fields
     carehome = models.ForeignKey(CareHome, on_delete=models.SET_NULL, blank=True, null=True,
                                  related_name="invoice_care_home")
+    item = models.ManyToManyField('InvoiceItem', blank=True, related_name="invoice_items")
 
     # Invoice Fields
     number = models.CharField(max_length=40, blank=True, null=True, verbose_name="Invoice Number")
     status = models.CharField(max_length=20, blank=True, null=True, verbose_name="Status")
-    item = models.ManyToManyField('InvoiceItem', blank=True, related_name="invoice_items")
     company_settings = models.ForeignKey(CompanySetting, on_delete=models.SET_NULL, blank=True, null=True,
                                          related_name="invoice_company_setting")
     notes = models.TextField(blank=True, null=True, verbose_name="Notes")

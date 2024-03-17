@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from residents.models import Resident
+from residents.serializers import ResidentSerializer
 
-# Create your views here.
+
+class ResidentViewSet(viewsets.ModelViewSet):
+    queryset = Resident.objects.all()
+    serializer_class = ResidentSerializer
